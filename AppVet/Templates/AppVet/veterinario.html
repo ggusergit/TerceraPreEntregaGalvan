@@ -1,0 +1,38 @@
+{% extends 'AppVet/padre.html' %}
+
+{% load static %}
+
+{% block loquecambia %}
+    <h2> Busqueda de veterinarios por apellido</h2>
+    <br>
+
+    {% if miFormulario.errors %}
+    <p style="color: red;">Están mal los datos, revisar.</p>
+    {% endif %}
+
+    <form action="/AppVet/buscarVet/" method="GET">
+        <input type="text" name="apellido" id="apellido">
+        <input type="submit" value="Buscar">
+    </form>
+    <br>
+
+    <h2> Resultado de la busqueda </h2>
+
+    {% if veterinario %}
+        <ul>
+            {% for vet in veterinario %}
+                {% if vet.apellido != "" %}
+                    <li> Nombre: {{vet.nombre}} </li>
+                    <li> Apellido: {{vet.apellido}} </li>
+                    <li> Matricula: {{vet.matricula}} </li>
+                    <li> Especialidad: {{vet.especialidad}} </li>
+                {% else %}
+                    <p style="color: red;"> No se encontraron veterinarios </p> 
+                {% endif %}
+            {% endfor %}
+        </ul>
+    
+        
+    {% endif %}
+
+{% endblock %}

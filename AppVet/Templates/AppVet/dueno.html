@@ -1,0 +1,37 @@
+{% extends 'AppVet/padre.html' %}
+
+{% load static %}
+
+{% block loquecambia %}
+
+<h2> Busqueda de dueños por apellido</h2>
+<br>
+
+{% if miFormulario.errors %}
+<p style="color: red;">Están mal los datos, revisar.</p>
+{% endif %}
+
+<form action="/AppVet/buscarDue/" method="GET">
+    <input type="text" name="apellido" id="apellido">
+    <input type="submit" value="Buscar">
+</form>
+<br>
+
+<h2> Resultado de la busqueda </h2>
+
+{% if dueno %}
+    <ul>
+        {% for due in dueno %}
+            <li> Nombre: {{due.nombre}} </li>
+            <li> Apellido: {{due.apellido}} </li>
+            <li> Edad: {{due.edad}} </li>
+            <li> Telefono: {{due.telefono}} </li>
+            <li> Direccion: {{due.direccion}} </li>
+            
+        {% endfor %}
+    </ul>
+{% else %}
+    <p style="color: red;"> No se encontraron dueños</p>
+{% endif %}
+
+{% endblock %}

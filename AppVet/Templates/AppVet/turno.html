@@ -1,0 +1,34 @@
+{% extends 'AppVet/padre.html' %}
+
+{% load static %}
+
+{% block loquecambia%}
+
+<h2> Busqueda de turnos por fecha</h2>
+<br>
+
+{% if miFormulario.errors %}
+<p style="color: red;">Están mal los datos, revisar.</p>
+{% endif %}
+
+<form action="/AppVet/buscarTur/" method="GET">
+    <input type="date" name="fecha" id="fecha">
+    <input type="submit" value="Buscar">
+</form>
+<br>
+
+<h2> Resultado de la busqueda </h2>
+
+{% if turno %}
+    <ul>
+        {% for tur in turno %}
+            <li> Fecha: {{tur.fecha}} </li>
+            <li> hora: {{tur.hora}} </li>
+            
+        {% endfor %}
+    </ul>
+{% else %}
+    <p style="color: red;"> No se encontraron turnos</p>
+{% endif %}
+
+{% endblock %}
