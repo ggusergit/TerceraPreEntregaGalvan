@@ -13,5 +13,9 @@ urlpatterns = [
     path('buscarMas/', buscarMasc),
     path('buscarTur/', buscarTurno),
     path('buscarDue/', buscarDue),
+    path('vetFormulario', vetFormulario, name='VetFormulario'),
+    path('masFormulario', masFormulario, name='MasFormulario'),
+    path('dueFormulario', dueFormulario, name='DueFormulario'),
+    path('turFormulario', turFormulario, name='TurFormulario'),
     
 ]
